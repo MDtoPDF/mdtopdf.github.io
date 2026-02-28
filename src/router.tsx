@@ -8,7 +8,7 @@ import TermsPage from './pages/TermsPage';
 const router = createHashRouter([
     { path: '/', element: <LandingPage /> },
     { path: '/app', element: <AppPage /> },
-    { path: '/support', element: <SupportPage /> },
+    { path: '/help', element: <SupportPage /> },
     { path: '/privacy', element: <PrivacyPage /> },
     { path: '/terms', element: <TermsPage /> },
 ]);

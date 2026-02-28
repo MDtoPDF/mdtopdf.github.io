@@ -35,7 +35,7 @@ const LandingPage: React.FC = () => {
                 </div>
                 <nav aria-label="Site navigation">
                     <Link to="/app">Editor</Link>
-                    <Link to="/support">Support</Link>
+                    <Link to="/help">Help</Link>
                     <Link to="/privacy">Privacy</Link>
                 </nav>
             </header>
@@ -119,6 +119,40 @@ const LandingPage: React.FC = () => {
                         ))}
                     </div>
                 </section>
+
+                {/* Buy Me a Coffee — Support section */}
+                <section className="support-section" aria-labelledby="support-heading">
+                    <div className="support-inner">
+                        <div className="support-text">
+                            <div className="section-label">Support the project</div>
+                            <h2 id="support-heading">Built with ☕ and open source love</h2>
+                            <p>
+                                MDToPDF is free, ad-free, and always will be. If it saved you time or
+                                made your workflow a little smoother, consider buying me a coffee.
+                                Every cup keeps this project alive and improving.
+                            </p>
+                            <a
+                                href="https://buymeacoffee.com/locastat"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn bmc-btn btn-lg"
+                                id="bmc-link"
+                            >
+                                <span>☕</span>
+                                Buy me a coffee
+                            </a>
+                        </div>
+                        <div className="support-decoration" aria-hidden="true">
+                            <div className="bmc-card">
+                                <div className="bmc-card-icon">☕</div>
+                                <div className="bmc-card-text">
+                                    <span className="bmc-card-name">locastat</span>
+                                    <span className="bmc-card-sub">buymeacoffee.com/locastat</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
 
             {/* Footer */}
@@ -132,7 +166,7 @@ const LandingPage: React.FC = () => {
                     <div className="footer-links">
                         <h4>Resources</h4>
                         <ul>
-                            <li><Link to="/support">Support</Link></li>
+                            <li><Link to="/help">Help</Link></li>
                             <li><Link to="/privacy">Privacy Policy</Link></li>
                             <li><Link to="/terms">Terms of Service</Link></li>
                         </ul>

@@ -10,7 +10,7 @@ const PrivacyPage: React.FC = () => (
             </div>
             <nav>
                 <Link to="/app">Editor</Link>
-                <Link to="/support">Support</Link>
+                <Link to="/help">Help</Link>
                 <Link to="/terms">Terms</Link>
             </nav>
         </header>

@@ -15,8 +15,8 @@ const SupportPage: React.FC = () => (
             </nav>
         </header>
         <div className="page-container">
-            <h1>Support</h1>
-            <p className="page-subtitle">Need help? We've got you covered.</p>
+            <h1>Help</h1>
+            <p className="page-subtitle">Find answers and get in touch.</p>
 
             <div className="page-section">
                 <h2>Frequently Asked Questions</h2>
