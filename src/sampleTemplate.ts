@@ -77,7 +77,7 @@ const exportToPDF = (doc: Document): void => {
 
 ## Image
 
-![Brown wooden blocks on white surface — Unsplash](https://images.unsplash.com/photo-aSX6Kot_KEE?auto=format&fit=crop&w=800&q=80)
+![Add an image](https://picsum.photos/200)
 
 ---
 
