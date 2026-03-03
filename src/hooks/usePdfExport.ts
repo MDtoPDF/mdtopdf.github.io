@@ -142,7 +142,28 @@ const PRINT_CONTENT_STYLES = `
     #mdtopdf-print-portal img,
     #mdtopdf-print-portal blockquote { break-inside: avoid; }
 
-    @page { size: A4; margin: 18mm; }
+    /* Frontmatter metadata block */
+    #mdtopdf-print-portal .frontmatter-block {
+      border: 0.75pt solid #c4b5fd;
+      border-left: 3pt solid #7c6af7;
+      border-radius: 4pt;
+      padding: 6pt 10pt;
+      margin-bottom: 14pt;
+      font-size: 9pt;
+      background: #f5f3ff;
+      break-inside: avoid;
+    }
+    #mdtopdf-print-portal .frontmatter-list { margin: 0; padding: 0; }
+    #mdtopdf-print-portal .frontmatter-row { display: flex; gap: 8pt; margin-bottom: 2pt; }
+    #mdtopdf-print-portal .frontmatter-key {
+      font-weight: 700;
+      color: #5b4cdb;
+      min-width: 70pt;
+      font-family: 'Courier New', monospace;
+    }
+    #mdtopdf-print-portal .frontmatter-value { color: #444; margin: 0; }
+
+    @page { size: A4; margin: 5mm; }
   }
 `;
 

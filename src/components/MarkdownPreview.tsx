@@ -12,6 +12,31 @@ export interface MarkdownPreviewHandle {
     getElement: () => HTMLDivElement | null;
 }
 
+/**
+ * Extracts YAML frontmatter from the beginning of a markdown string.
+ * Supports both `---` (standard) and `--` (two-dash variant) delimiters.
+ * Returns the parsed key/value pairs and the remaining body.
+ */
+function parseFrontmatter(raw: string): {
+    fields: { key: string; value: string }[];
+    body: string;
+} {
+    // Match --- or -- delimiter at the very start of the document
+    const match = raw.match(/^(-{2,3})\r?\n([\s\S]*?)\r?\n\1\r?\n?([\s\S]*)$/);
+    if (!match) return { fields: [], body: raw };
+
+    const yamlBlock = match[2];
+    const body = match[3] ?? '';
+
+    const fields: { key: string; value: string }[] = [];
+    for (const line of yamlBlock.split(/\r?\n/)) {
+        const kv = line.match(/^([^:]+):\s*(.*)$/);
+        if (kv) fields.push({ key: kv[1].trim(), value: kv[2].trim() });
+    }
+
+    return { fields, body };
+}
+
 const MarkdownPreview = forwardRef<MarkdownPreviewHandle, MarkdownPreviewProps>(
     ({ content }, ref) => {
         const contentRef = useRef<HTMLDivElement>(null);
@@ -20,9 +45,23 @@ const MarkdownPreview = forwardRef<MarkdownPreviewHandle, MarkdownPreviewProps>(
             getElement: () => contentRef.current,
         }));
 
+        const { fields, body } = parseFrontmatter(content);
+
         return (
             <div className="preview-body">
                 <div className="markdown-content" ref={contentRef}>
+                    {fields.length > 0 && (
+                        <div className="frontmatter-block">
+                            <dl className="frontmatter-list">
+                                {fields.map(({ key, value }) => (
+                                    <div className="frontmatter-row" key={key}>
+                                        <dt className="frontmatter-key">{key}</dt>
+                                        <dd className="frontmatter-value">{value}</dd>
+                                    </div>
+                                ))}
+                            </dl>
+                        </div>
+                    )}
                     <ReactMarkdown
                         remarkPlugins={[remarkGfm]}
                         components={{
@@ -52,7 +91,7 @@ const MarkdownPreview = forwardRef<MarkdownPreviewHandle, MarkdownPreviewProps>(
                             },
                         }}
                     >
-                        {content}
+                        {body}
                     </ReactMarkdown>
                 </div>
             </div>
